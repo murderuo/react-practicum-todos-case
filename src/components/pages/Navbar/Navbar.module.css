@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: flex-start;
+  width: 60%;
+  height: 60px;
+  background-color: aqua;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+.header ul li a {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+}
+
+.mainmenu {
+  display: flex;
+  /* justify-content: flex-start; */
+  gap: 20px;
+  margin-right: 20px;
+  /* list-style: none; */
+}
+.mainmenu ul {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  list-style: none;
+}
+
+.loggeduser {
+  list-style: none;
+  margin-left: auto;
+  gap: 20px;
+}
+
+.loggedmenu ul {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  list-style: none;
+}
