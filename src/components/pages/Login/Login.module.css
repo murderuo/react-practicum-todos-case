@@ -29,7 +29,6 @@
 .form div input {
   display: flex;
   justify-content: space-between;
-
   width: 200px;
   height: 30px;
   border: 1px solid black;

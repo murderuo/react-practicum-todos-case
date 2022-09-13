@@ -1,7 +1,25 @@
 .container {
-  text-align: center;
+  /* text-align: center; */
   margin: 0 auto;
   width: 60%;
   border: 1px solid black;
   height: 80vh;
+}
+
+.todoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding: 20px;
+}
+.todoContainer li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  list-style: none;
+  border: 1px solid black;
+  width: 60%;
+  padding: 10px;
+  margin: 5px;
 }
