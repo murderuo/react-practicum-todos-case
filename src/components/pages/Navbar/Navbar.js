@@ -2,21 +2,14 @@ import NavbarStyle from './Navbar.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 import withUserContext from '../../hoc/withUserContext';
-import { useEffect } from 'react';
 
-function Navbar({ userIsAuth, setUserIsAuth }) {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const LoggedUser = JSON.parse(localStorage.getItem('user'));
-    LoggedUser?.isAuth ? setUserIsAuth(true) : setUserIsAuth(false);
-    LoggedUser?.isAuth && navigate('/alltodos');
-  }, []);
+function Navbar({ user, setUser, navigate }) {
+  console.log('navbar', user.isAuth);
 
   return (
     <>
       <div className={NavbarStyle.header}>
-        {!userIsAuth ? (
+        {!user.isAuth ? (
           <div className={NavbarStyle.mainmenu}>
             <ul>
               <li>
@@ -36,7 +29,19 @@ function Navbar({ userIsAuth, setUserIsAuth }) {
                 </li>
               </ul>
             </div>
-            <div className={NavbarStyle.loggeduser}>test</div>
+            <div className={NavbarStyle.loggeduser}>
+              {user.username}
+              <div
+                className={NavbarStyle.logout}
+                onClick={() => {
+                  localStorage.removeItem('user');
+                  setUser({ ...user, isAuth: false });
+                  navigate('/');
+                }}
+              >
+                Log Out!
+              </div>
+            </div>
           </>
         )}
       </div>

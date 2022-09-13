@@ -1,23 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import withUserContext from '../../hoc/withUserContext';
 import LoginStyle from './Login.module.css';
 
-function LoginPage({ userIsAuth, setUserIsAuth }) {
-
-
-  const [user, setUser] = useState({ username: '', password: '' });
-
+function LoginPage({ user, setUser, navigate }) {
+  useEffect(() => {
+    const LoggedUser = JSON.parse(localStorage.getItem('user'));
+    console.log(LoggedUser);
+    if (LoggedUser) {
+      LoggedUser?.isAuth &&
+        LoggedUser.username !== '' &&
+        LoggedUser.password !== '' &&
+        setUser(LoggedUser);
+      navigate('/alltodos');
+    } else {
+      navigate('/');
+    }
+  }, []);
 
   const handleLogin = () => {
-    if (user.username === 'admin' && user.password === 'admin') {
+    if (user.username !== '' && user.password !== '') {
+      setUser({ ...user, isAuth: true });
       const locaStorageUser = JSON.stringify({ ...user, isAuth: true });
-      localStorage.setItem("user", locaStorageUser);
-      setUserIsAuth(true);
+      localStorage.setItem('user', locaStorageUser);
+      navigate('/alltodos');
     }
   };
 
+
   const handleChange = e => {
-    console.log(user);
+    // console.log(user);
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 

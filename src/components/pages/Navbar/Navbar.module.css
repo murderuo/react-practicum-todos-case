@@ -32,6 +32,7 @@
   list-style: none;
   margin-left: auto;
   gap: 20px;
+  position: relative;
 }
 
 .loggedmenu ul {
@@ -39,4 +40,24 @@
   justify-content: flex-start;
   gap: 20px;
   list-style: none;
+}
+
+.logout{
+  position: absolute;
+  top: 25px;
+  right: 0;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  visibility: hidden;
+  transition: .5s opacity, .5s visibility;
+  opacity: 0;
+}
+
+.loggeduser:hover .logout{
+    visibility: visible;
+    opacity: 1;
 }

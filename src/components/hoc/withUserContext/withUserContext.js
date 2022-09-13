@@ -1,14 +1,19 @@
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserContext from '../../Context/UserContext';
 
 const WithUserContext = WrappedComponent => {
   const NewComponent = () => {
-    const { userIsAuth, setUserIsAuth } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
+    const navigate = useNavigate();
 
-    return <WrappedComponent 
-    userIsAuth={userIsAuth}
-    setUserIsAuth={setUserIsAuth}
-    ></WrappedComponent>;
+    return (
+      <WrappedComponent
+        user={user}
+        setUser={setUser}
+        navigate={navigate}
+      ></WrappedComponent>
+    );
   };
 
   return NewComponent;
