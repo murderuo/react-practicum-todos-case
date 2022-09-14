@@ -1,10 +1,21 @@
 import { createPortal } from 'react-dom';
 import MainStyle from '../pages/Main/Main.module.css';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Portal({ isOpen, setIsOpen, item, setTodoItem }) {
   console.log(item);
   if (!isOpen) return null;
+
+  const putData = async () => {
+    const response = await axios.put(
+      `https://631eea8322cefb1edc3d783a.mockapi.io/todos/${item.id}`,
+      item,
+    );
+    // console.log(response.data);
+    const data = await response.data;
+    console.log(data);
+  };
 
   const handleUpdate = e => {
     // console.log(e.target.value);
@@ -12,8 +23,9 @@ function Portal({ isOpen, setIsOpen, item, setTodoItem }) {
   };
 
   const handleSave = () => {
-    
-  }
+    putData();
+    setIsOpen(false);
+  };
 
   return createPortal(
     <div className={MainStyle.modalwindow}>
@@ -30,7 +42,7 @@ function Portal({ isOpen, setIsOpen, item, setTodoItem }) {
           <input type="checkbox" defaultChecked={item.isCompleted} />
         </label>
         <div className="buttons">
-          <button onClick={() => setIsOpen(false)}>Save</button>
+          <button onClick={handleSave}>Save</button>
           <button onClick={() => setIsOpen(false)}>Close</button>
         </div>
       </div>

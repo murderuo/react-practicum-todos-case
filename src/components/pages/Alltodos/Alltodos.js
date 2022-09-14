@@ -8,6 +8,7 @@ function Alltodos() {
   const [completedTodos, setCompletedTodos] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [todoItem, setTodoItem] = useState({});
+  
 
   const getData = async () => {
     const response = await axios.get(
@@ -20,7 +21,7 @@ function Alltodos() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [isOpen]);
 
   const handleDelete = item => {
     const filteredTodos = todos.filter(todo => todo.id !== item.id);
