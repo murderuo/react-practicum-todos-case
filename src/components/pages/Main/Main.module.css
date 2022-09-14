@@ -4,6 +4,17 @@
   width: 60%;
   border: 1px solid black;
   height: 80vh;
+  position: relative;
+}
+
+.modalblur {
+  filter: blur(2px);
+  /* backdrop-filter: blur(8px); */
+  /* background: rgba(0, 0, 0, 0.8); */
+}
+.container > h2 {
+  text-align: center;
+  margin-top: 20px;
 }
 
 .todoContainer {
@@ -13,8 +24,13 @@
   list-style: none;
   padding: 20px;
 }
+
+.todoContainer > h2 {
+  margin-bottom: 20px;
+}
+
 .todoContainer li {
-  /* display: flex; */
+  display: flex;
   flex-direction: row;
   /* justify-content: flex-start; */
   list-style: none;
@@ -29,7 +45,50 @@
   margin: 5px;
 }
 
-.todoContainer >li >button {
+.todoContainer > li > div {
+  display: flex;
+  justify-content: space-between;
   margin-left: auto;
+  gap: 10px;
   /* margin: 5px; */
+}
+
+.todoContainer > li > div > button {
+  padding: 0px 10px;
+  border: 1px solid black;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.modalwindow {
+  position: absolute;
+  top: 20%;
+  left: calc(50% - 150px);
+  width: 300px;
+  height: 20%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  z-index: 100;
+  border: 1px solid black;
+  /* backdrop-filter: blur(20px); */
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.modalContainer > label > input {
+  margin: 5px;
+  gap: 10px;
+}
+.modalContainer > div {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
