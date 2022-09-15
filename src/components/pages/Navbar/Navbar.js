@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import NavbarStyle from './Navbar.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import withUserContext from '../../hoc/withUserContext';
 import UserContext from '../../Context/UserContext';

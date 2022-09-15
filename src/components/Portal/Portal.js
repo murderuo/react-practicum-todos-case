@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import MainStyle from '../pages/Main/Main.module.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 function Portal({ isOpen, setIsOpen, item, setTodoItem, loading, setLoading }) {
@@ -11,7 +11,7 @@ function Portal({ isOpen, setIsOpen, item, setTodoItem, loading, setLoading }) {
   const putData = async () => {
     setLoading(true);
     // console.log('data fetch start');
-    const response = await axios.put(
+    await axios.put(
       `https://631eea8322cefb1edc3d783a.mockapi.io/todos/${item.id}`,
       item,
     );

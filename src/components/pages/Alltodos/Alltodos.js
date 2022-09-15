@@ -21,10 +21,10 @@ function Alltodos() {
   const deleteData = async todo => {
     setLoading(true);
     // console.log('data fetch start');
-    const response = await axios.delete(
+   await axios.delete(
       `https://631eea8322cefb1edc3d783a.mockapi.io/todos/${todo.id}`,
     );
-    const data = await response.data;
+    // const data = await response.data;
     // console.log('data fetch finished');
     setLoading(false);
   };
@@ -33,11 +33,11 @@ function Alltodos() {
     console.log('putting data',item);
     setLoading(true);
     // console.log('data fetch start');
-    const response = await axios.put(
+    await axios.put(
       `https://631eea8322cefb1edc3d783a.mockapi.io/todos/${item.id}`,
       item,
     );
-    const data = await response.data;
+    // const data = await response.data;
     // console.log('data fetch finished');
     setLoading(false);
   };

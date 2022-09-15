@@ -1,6 +1,5 @@
 import withUserContext from '../../hoc/withUserContext';
 import AddtodoStyle from './AddtodoStyle.module.css';
-import MainStyle from '../Main/Main.module.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -12,9 +11,9 @@ function Addtodo({ user, navigate }) {
   const postData = async todo => {
     setLoading(true);
     // console.log('data fetch start');
-    const response = await axios.post(
+    await axios.post(
       `https://631eea8322cefb1edc3d783a.mockapi.io/todos/`,
-      todoItem,
+      todo,
     );
     // const data = await response.data;
     // console.log('data fetch finished');
@@ -27,10 +26,11 @@ function Addtodo({ user, navigate }) {
     if (user.username === '' && user.password === '' && !user.isAuth) {
       navigate('/');
     }
+    // eslint-disable-next-line
   }, []);
 
   const handleInputUpdate = e => {
-    e.target.value.length> 3 && setError('');
+    e.target.value.length > 3 && setError('');
     setTodoItem({ ...todoItem, [e.target.name]: e.target.value });
   };
   const handleCheckBoxUpdate = e => {

@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {  useEffect } from 'react';
 import withUserContext from '../../hoc/withUserContext';
 import LoginStyle from './Login.module.css';
 
@@ -16,6 +15,7 @@ function LoginPage({ user, setUser, navigate }) {
     } else {
       navigate('/');
     }
+    // eslint-disable-next-line
   }, []);
 
   const handleLogin = () => {
