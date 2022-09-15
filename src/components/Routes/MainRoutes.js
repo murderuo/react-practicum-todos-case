@@ -3,9 +3,8 @@ import withUserContext from '../hoc/withUserContext';
 import Addtodo from '../pages/Addtodo/Addtodo';
 import LoginPage from '../pages/Login/Login';
 import Main from '../pages/Main/Main';
-import React, { useEffect } from 'react';
 
-function MainRoutes({ user, setUser, navigate }) {
+function MainRoutes({ user }) {
   return (
     <Routes>
       <Route path="/" element={!user.isAuth ? <LoginPage /> : <Main />} />
