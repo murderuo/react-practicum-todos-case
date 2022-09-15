@@ -9,9 +9,8 @@ const UserContextProvider = ({ children }) => {
     password: '',
     isAuth: false,
   });
-  const [theme, setTheme] = useState('light');
 
-  const values = { user, setUser, theme, setTheme};
+  const values = { user, setUser };
 
   return <UserContext.Provider value={values}>{children}</UserContext.Provider>;
 };

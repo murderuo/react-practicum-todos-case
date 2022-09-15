@@ -1,16 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import NavbarStyle from './Navbar.module.css';
 import { Link } from 'react-router-dom';
 
 import withUserContext from '../../hoc/withUserContext';
-import UserContext from '../../Context/UserContext';
 
 function Navbar({ user, setUser, navigate }) {
-  const { theme } = useContext(UserContext);
 
   return (
-    <div className={theme}>
+    <div >
       <div className={NavbarStyle.header}>
         {!user.isAuth ? (
           <div className={NavbarStyle.mainmenu}>
