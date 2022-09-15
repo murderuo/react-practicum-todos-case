@@ -1,13 +1,16 @@
+import React, { useContext } from 'react';
+
 import NavbarStyle from './Navbar.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 import withUserContext from '../../hoc/withUserContext';
+import UserContext from '../../Context/UserContext';
 
 function Navbar({ user, setUser, navigate }) {
-  console.log('navbar', user.isAuth);
+  const { theme } = useContext(UserContext);
 
   return (
-    <>
+    <div className={theme}>
       <div className={NavbarStyle.header}>
         {!user.isAuth ? (
           <div className={NavbarStyle.mainmenu}>
@@ -45,8 +48,8 @@ function Navbar({ user, setUser, navigate }) {
           </>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
-export default withUserContext(Navbar);
+export default React.memo(withUserContext(Navbar));

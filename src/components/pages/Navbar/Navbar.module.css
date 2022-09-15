@@ -1,17 +1,23 @@
 .header {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
+
   width: 60%;
   height: 60px;
-  background-color: aqua;
+  /* background-color: aqua; */
   margin: 10px auto;
   padding: 20px;
+  background-color: #25316D;
+
 }
 
 .header ul li a {
   list-style: none;
   text-decoration: none;
-  color: black;
+  color: #FEF5AC;
+  flex-wrap: wrap;
+
 }
 
 .mainmenu {
@@ -19,45 +25,56 @@
   /* justify-content: flex-start; */
   gap: 20px;
   margin-right: 20px;
+  flex-wrap: wrap;
   /* list-style: none; */
 }
 .mainmenu ul {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
+
   gap: 20px;
   list-style: none;
 }
 
 .loggeduser {
+  flex-wrap: wrap;
+
   list-style: none;
   margin-left: auto;
   gap: 20px;
   position: relative;
+  color: #FEF5AC;
+  z-index: 1;
 }
 
 .loggedmenu ul {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
+
   gap: 20px;
   list-style: none;
 }
 
-.logout{
+.logout {
   position: absolute;
   top: 25px;
-  right: 0;
-  background-color: white;
+  right: 0px;
+  background-color: #FEF5AC;
+  color: #25316D;
   border: 1px solid black;
   border-radius: 5px;
   padding: 10px;
   width: 100px;
   text-align: center;
   visibility: hidden;
-  transition: .5s opacity, .5s visibility;
-  opacity: 0;
+  transition: 0.5s opacity, 0.5s visibility;
+  /* opacity: 0.8; */
 }
 
-.loggeduser:hover .logout{
-    visibility: visible;
-    opacity: 1;
+.loggeduser:hover .logout {
+  visibility: visible;
+  opacity: 1;
+  /* background-color: aqua; */
 }

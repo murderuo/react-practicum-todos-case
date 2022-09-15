@@ -6,7 +6,7 @@ import LoginStyle from './Login.module.css';
 function LoginPage({ user, setUser, navigate }) {
   useEffect(() => {
     const LoggedUser = JSON.parse(localStorage.getItem('user'));
-    console.log(LoggedUser);
+    // console.log(LoggedUser);
     if (LoggedUser) {
       LoggedUser?.isAuth &&
         LoggedUser.username !== '' &&

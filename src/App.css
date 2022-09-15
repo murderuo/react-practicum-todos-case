@@ -5,4 +5,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
+  /* background-color: #5F6F94; */
+}
+
+.dark {
+  background-color: #1e1e1e !important;
+  color: white !important;
+}
+
+.light {
+  background-color: white !important;
+  color: black !important;
 }

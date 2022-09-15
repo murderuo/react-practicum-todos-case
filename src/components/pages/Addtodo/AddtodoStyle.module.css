@@ -1,7 +1,34 @@
 .container {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content:center ; */
   margin: 0 auto;
+  padding: 20px;
   width: 60%;
   border: 1px solid black;
-  height: 80vh;
+  background-color: #25316D;
+  height: auto;
+  color: #FEF5AC;
+}
+
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 60%;
+  padding: 20px;
+  /* border: 1px solid black; */
+}
+.modalContainer > label > input {
+  margin: 5px;
+  gap: 10px;
+}
+.modalContainer > div {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }

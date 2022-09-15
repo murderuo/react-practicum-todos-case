@@ -5,6 +5,7 @@ import Portal from '../../Portal/Portal';
 
 function Alltodos() {
   const [todos, setTodos] = useState([]);
+  const [completedTodos, setCompletedTodos] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [todoItem, setTodoItem] = useState({});
   const [loading, setLoading] = useState(false);
@@ -18,27 +19,15 @@ function Alltodos() {
     setTodos(data);
   };
 
-  const deleteData = async todo => {
+  const deleteData = async () => {
     setLoading(true);
-    // console.log('data fetch start');
-    const response = await axios.delete(
-      `https://631eea8322cefb1edc3d783a.mockapi.io/todos/${todo.id}`,
-    );
-    const data = await response.data;
-    // console.log('data fetch finished');
-    setLoading(false);
-  };
-
-  const putData = async item => {
-    console.log('putting data',item);
-    setLoading(true);
-    // console.log('data fetch start');
+    console.log('data fetch start');
     const response = await axios.put(
       `https://631eea8322cefb1edc3d783a.mockapi.io/todos/${item.id}`,
       item,
     );
     const data = await response.data;
-    // console.log('data fetch finished');
+    console.log('data fetch finished');
     setLoading(false);
   };
 
@@ -47,22 +36,49 @@ function Alltodos() {
   }, [loading]);
 
   const handleDelete = item => {
-    deleteData(item);
+    
+    const filteredTodos = todos.filter(todo => todo.id !== item.id);
+    setTodos(filteredTodos);
   };
 
   const handleCompleCheck = item => {
-    todos.map(
-      todo =>
-        todo.id === item.id &&
-        putData({ ...todo, isCompleted: !todo.isCompleted }),
+    const setCompleteTodos = todos.map(todo =>
+      todo.id === item.id ? { ...todo, isCompleted: true } : todo,
     );
+
+    const completedTodoList = setCompleteTodos.filter(
+      todo => todo.isCompleted === true,
+    );
+
+    const notCompletedList = setCompleteTodos.filter(
+      todo => todo.isCompleted === false,
+    );
+
+    // console.log(notCompletedList);
+    setCompletedTodos([...completedTodos, ...completedTodoList]);
+    setTodos(notCompletedList);
+  };
+
+  const handleUnCompleteCheck = item => {
+    const unCompletedTodoList = completedTodos.map(todo =>
+      todo.id === item.id ? { ...todo, isCompleted: false } : todo,
+    );
+    // console.log(unCompletedTodoList);
+    const newCompletedTodoList = unCompletedTodoList.filter(
+      todo => todo.isCompleted === true,
+    );
+    const newUnCompletedTodoList = unCompletedTodoList.filter(
+      todo => todo.isCompleted === false,
+    );
+
+    setTodos([...todos, ...newUnCompletedTodoList]);
+    setCompletedTodos([...newCompletedTodoList]);
   };
 
   const handleEdit = todo => {
     setTodoItem(todo);
     setIsOpen(true);
   };
-  // console.log('todos',todos);
   return (
     <>
       <div className={MainStyle.container}>
@@ -83,21 +99,40 @@ function Alltodos() {
                 <input
                   type="checkbox"
                   onClick={() => handleCompleCheck(item)}
-                  defaultChecked={item.isCompleted}
                 />
                 <label className={item.isCompleted ? MainStyle.completed : ''}>
                   {item.content}
                 </label>{' '}
                 <div>
-                  <button onClick={() => handleEdit(item)} disabled={loading}>Edit</button>
-                  <button onClick={() => handleDelete(item)} disabled={loading}>
-                    Delete
-                  </button>
+                  <button onClick={() => handleEdit(item)}>Edit</button>
+                  <button onClick={() => handleDelete(item)}>Delete</button>
                 </div>
               </li>
             ))
           )}
         </ul>
+
+        {/*  */}
+
+        {completedTodos.length === 0 ? (
+          <h2>completed todos not found</h2>
+        ) : (
+          <>
+            <h2>Completed Todos</h2>
+            <ul className={MainStyle.todoContainer}>
+              {completedTodos.map(todo => (
+                <li key={todo.id}>
+                  <input
+                    type="checkbox"
+                    onClick={() => handleUnCompleteCheck(todo)}
+                    defaultChecked={todo.isCompleted}
+                  />
+                  <label className={MainStyle.completed}>{todo.content}</label>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
       <Portal
         isOpen={isOpen}
