@@ -30,7 +30,7 @@ function Alltodos() {
   };
 
   const putData = async item => {
-    console.log('putting data',item);
+    // console.log('putting data',item);
     setLoading(true);
     // console.log('data fetch start');
     await axios.put(
