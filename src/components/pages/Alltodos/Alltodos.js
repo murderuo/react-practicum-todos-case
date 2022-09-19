@@ -83,7 +83,8 @@ function Alltodos() {
                 <input
                   type="checkbox"
                   onClick={() => handleCompleCheck(item)}
-                  defaultChecked={item.isCompleted}
+                  // defaultChecked={item.isCompleted}
+                  checked={item.isCompleted}
                 />
                 <label className={item.isCompleted ? MainStyle.completed : ''}>
                   {item.content}
