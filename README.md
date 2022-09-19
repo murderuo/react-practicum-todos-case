@@ -14,3 +14,12 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 [Live](https://react-practicum-todos-case.netlify.app/)
+
+
+You can any username and pw f.e : 
+
+username: admin
+pw: 1234
+
+username:asdfg
+pw:asdfg
